@@ -1,0 +1,87 @@
+[gd_scene format=3 uid="uid://dehmeu5kji8hw"]
+
+[ext_resource type="PackedScene" uid="uid://b8oxkj8oidru1" path="res://scenes/player.tscn" id="1_uwrxv"]
+[ext_resource type="Script" uid="uid://c361cv3uh8km8" path="res://scripts/pause.gd" id="2_yqjtg"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8cj0n"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_uwrxv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8cj0n"]
+
+[node name="game" type="Node3D" unique_id=731612117]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1039886930]
+transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0.5, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1026303837]
+shape = SubResource("BoxShape3D_8cj0n")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=767500615]
+mesh = SubResource("BoxMesh_uwrxv")
+surface_material_override/0 = SubResource("StandardMaterial3D_8cj0n")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=227133486]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 8.49139, 0)
+
+[node name="Player" parent="." unique_id=457187399 instance=ExtResource("1_uwrxv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.4738278, 0)
+
+[node name="PauseLayer" type="CanvasLayer" parent="." unique_id=2086990315]
+process_mode = 3
+
+[node name="PauseMenu" type="Control" parent="PauseLayer" unique_id=2069157707]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_yqjtg")
+
+[node name="PauseBG" type="ColorRect" parent="PauseLayer/PauseMenu" unique_id=1331128661]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.011764706, 0.011764706, 0.011764706, 0.49019608)
+
+[node name="PauseCnt" type="VBoxContainer" parent="PauseLayer/PauseMenu" unique_id=1782778534]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -114.0
+offset_top = -123.5
+offset_right = 114.0
+offset_bottom = 123.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="Pause" type="Label" parent="PauseLayer/PauseMenu/PauseCnt" unique_id=673292372]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Pause"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Continue" type="Button" parent="PauseLayer/PauseMenu/PauseCnt" unique_id=714104993]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Continue"
+
+[node name="MenuBtn" type="Button" parent="PauseLayer/PauseMenu/PauseCnt" unique_id=291588637]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Menu"
+
+[connection signal="pressed" from="PauseLayer/PauseMenu/PauseCnt/Continue" to="PauseLayer/PauseMenu" method="_on_continue_pressed"]
+[connection signal="pressed" from="PauseLayer/PauseMenu/PauseCnt/MenuBtn" to="PauseLayer/PauseMenu" method="_on_menu_btn_pressed"]

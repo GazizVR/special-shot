@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://c0iwtwwlag4pt"]
+
+[ext_resource type="Script" uid="uid://vara0lsm3f2m" path="res://scripts/menu.gd" id="1_yqeox"]
+
+[node name="menu" type="Control" unique_id=1652089702]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yqeox")
+
+[node name="MainMenu" type="VBoxContainer" parent="." unique_id=1318785747]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -54.0
+offset_top = -44.5
+offset_right = 54.0
+offset_bottom = 44.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="PlayBtn" type="Button" parent="MainMenu" unique_id=1383492899]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Play"
+
+[node name="QuitBtn" type="Button" parent="MainMenu" unique_id=1965170476]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Quit"
+
+[connection signal="pressed" from="MainMenu/PlayBtn" to="." method="_on_play_btn_pressed"]
+[connection signal="pressed" from="MainMenu/QuitBtn" to="." method="_on_quit_btn_pressed"]
