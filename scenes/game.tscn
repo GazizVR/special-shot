@@ -8,6 +8,8 @@
 [sub_resource type="BoxMesh" id="BoxMesh_uwrxv"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8cj0n"]
+shading_mode = 0
+albedo_color = Color(0.7607843, 0.69803923, 0.5019608, 1)
 
 [node name="game" type="Node3D" unique_id=731612117]
 
@@ -25,7 +27,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_8cj0n")
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 8.49139, 0)
 
 [node name="Player" parent="." unique_id=457187399 instance=ExtResource("1_uwrxv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1227226, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 
 [node name="PauseLayer" type="CanvasLayer" parent="." unique_id=2086990315]
 process_mode = 3
