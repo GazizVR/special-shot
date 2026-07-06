@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://b8oxkj8oidru1" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="Script" uid="uid://c361cv3uh8km8" path="res://scripts/pause.gd" id="2_yqjtg"]
+[ext_resource type="Script" uid="uid://cjlj2lm1xcx6a" path="res://scripts/aim.gd" id="3_lnu2h"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8cj0n"]
 
@@ -13,13 +14,13 @@ albedo_color = Color(0.7607843, 0.69803923, 0.5019608, 1)
 
 [node name="game" type="Node3D" unique_id=731612117]
 
-[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1039886930]
+[node name="floor" type="StaticBody3D" parent="." unique_id=1039886930]
 transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0.5, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1026303837]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="floor" unique_id=1026303837]
 shape = SubResource("BoxShape3D_8cj0n")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=767500615]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="floor" unique_id=767500615]
 mesh = SubResource("BoxMesh_uwrxv")
 surface_material_override/0 = SubResource("StandardMaterial3D_8cj0n")
 
@@ -29,10 +30,10 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 8
 [node name="Player" parent="." unique_id=457187399 instance=ExtResource("1_uwrxv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 
-[node name="PauseLayer" type="CanvasLayer" parent="." unique_id=2086990315]
+[node name="GUI" type="CanvasLayer" parent="." unique_id=2086990315]
 process_mode = 3
 
-[node name="PauseMenu" type="Control" parent="PauseLayer" unique_id=2069157707]
+[node name="PauseMenu" type="Control" parent="GUI" unique_id=2069157707]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -41,7 +42,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_yqjtg")
 
-[node name="PauseBG" type="ColorRect" parent="PauseLayer/PauseMenu" unique_id=1331128661]
+[node name="PauseBG" type="ColorRect" parent="GUI/PauseMenu" unique_id=1331128661]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -51,7 +52,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.011764706, 0.011764706, 0.011764706, 0.49019608)
 
-[node name="PauseCnt" type="VBoxContainer" parent="PauseLayer/PauseMenu" unique_id=1782778534]
+[node name="PauseCnt" type="VBoxContainer" parent="GUI/PauseMenu" unique_id=1782778534]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -68,22 +69,37 @@ grow_vertical = 2
 theme_override_constants/separation = 12
 alignment = 1
 
-[node name="Pause" type="Label" parent="PauseLayer/PauseMenu/PauseCnt" unique_id=673292372]
+[node name="Pause" type="Label" parent="GUI/PauseMenu/PauseCnt" unique_id=673292372]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "Pause"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Continue" type="Button" parent="PauseLayer/PauseMenu/PauseCnt" unique_id=714104993]
+[node name="Continue" type="Button" parent="GUI/PauseMenu/PauseCnt" unique_id=714104993]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "Continue"
 
-[node name="MenuBtn" type="Button" parent="PauseLayer/PauseMenu/PauseCnt" unique_id=291588637]
+[node name="MenuBtn" type="Button" parent="GUI/PauseMenu/PauseCnt" unique_id=291588637]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "Menu"
 
-[connection signal="pressed" from="PauseLayer/PauseMenu/PauseCnt/Continue" to="PauseLayer/PauseMenu" method="_on_continue_pressed"]
-[connection signal="pressed" from="PauseLayer/PauseMenu/PauseCnt/MenuBtn" to="PauseLayer/PauseMenu" method="_on_menu_btn_pressed"]
+[node name="Aim" type="Control" parent="GUI" unique_id=1347646664]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_lnu2h")
+
+[connection signal="pressed" from="GUI/PauseMenu/PauseCnt/Continue" to="GUI/PauseMenu" method="_on_continue_pressed"]
+[connection signal="pressed" from="GUI/PauseMenu/PauseCnt/MenuBtn" to="GUI/PauseMenu" method="_on_menu_btn_pressed"]
