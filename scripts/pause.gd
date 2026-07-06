@@ -3,7 +3,7 @@ extends Control
 var isPaused = false
 
 func _input(event: InputEvent) -> void:
-	if Input.is_action_just_pressed("Pause"):
+	if Input.is_action_just_pressed("pause"):
 		isPaused = !isPaused
 		if isPaused:
 			$PauseBG.visible = true
