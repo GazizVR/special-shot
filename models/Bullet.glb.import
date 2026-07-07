@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cwlrr02m4xifr"
-path="res://.godot/imported/Glock.glb-31327d79075f0ffaedc8672f5bba58b6.scn"
+uid="uid://b0t43bhmpy62c"
+path="res://.godot/imported/Bullet.glb-21da766b51f8633f262797a25e06a99c.scn"
 
 [deps]
 
-source_file="res://models/Glock.glb"
-dest_files=["res://.godot/imported/Glock.glb-31327d79075f0ffaedc8672f5bba58b6.scn"]
+source_file="res://models/Bullet.glb"
+dest_files=["res://.godot/imported/Bullet.glb-21da766b51f8633f262797a25e06a99c.scn"]
 
 [params]
 

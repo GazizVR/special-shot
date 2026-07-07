@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://dehmeu5kji8hw"]
 
-[ext_resource type="Script" uid="uid://jj53ghke28ne" path="res://scripts/game.gd" id="1_lbhrr"]
-[ext_resource type="PackedScene" uid="uid://b8oxkj8oidru1" path="res://scenes/player.tscn" id="1_uwrxv"]
-[ext_resource type="Script" uid="uid://c361cv3uh8km8" path="res://scripts/pause.gd" id="2_yqjtg"]
-[ext_resource type="Script" uid="uid://cjlj2lm1xcx6a" path="res://scripts/aim.gd" id="3_lnu2h"]
+[ext_resource type="Script" uid="uid://jj53ghke28ne" path="res://scripts/game.gd" id="1_78awf"]
+[ext_resource type="PackedScene" uid="uid://b8oxkj8oidru1" path="res://scenes/Player.tscn" id="2_s0nni"]
+[ext_resource type="Script" uid="uid://c361cv3uh8km8" path="res://scripts/pause.gd" id="3_aug50"]
+[ext_resource type="Script" uid="uid://cjlj2lm1xcx6a" path="res://scripts/aim.gd" id="4_kiw3p"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8cj0n"]
 
@@ -14,7 +14,7 @@ shading_mode = 0
 albedo_color = Color(0.7607843, 0.69803923, 0.5019608, 1)
 
 [node name="game" type="Node3D" unique_id=731612117]
-script = ExtResource("1_lbhrr")
+script = ExtResource("1_78awf")
 
 [node name="floor" type="StaticBody3D" parent="." unique_id=1039886930]
 transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0.5, 0)
@@ -29,7 +29,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_8cj0n")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=227133486]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 8.49139, 0)
 
-[node name="Player" parent="." unique_id=457187399 instance=ExtResource("1_uwrxv")]
+[node name="Player" parent="." unique_id=457187399 instance=ExtResource("2_s0nni")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 
 [node name="GUI" type="CanvasLayer" parent="." unique_id=2086990315]
@@ -42,7 +42,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("2_yqjtg")
+script = ExtResource("3_aug50")
 
 [node name="PauseBG" type="ColorRect" parent="GUI/PauseMenu" unique_id=1331128661]
 visible = false
@@ -101,7 +101,7 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("3_lnu2h")
+script = ExtResource("4_kiw3p")
 
 [connection signal="pressed" from="GUI/PauseMenu/PauseCnt/Continue" to="GUI/PauseMenu" method="_on_continue_pressed"]
 [connection signal="pressed" from="GUI/PauseMenu/PauseCnt/MenuBtn" to="GUI/PauseMenu" method="_on_menu_btn_pressed"]

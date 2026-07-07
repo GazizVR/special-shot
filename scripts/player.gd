@@ -5,8 +5,14 @@ extends CharacterBody3D
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		rotate_y(-event.relative.x*mouseSensetivity)
+		var vertical_rotaion = event.relative.y*mouseSensetivity
+		$Hand.rotation.x = clamp(
+			$Hand.rotation.x+vertical_rotaion,
+			deg_to_rad(-60),
+			deg_to_rad(60)
+		)
 		$Camera.rotation.x = clamp(
-			$Camera.rotation.x-event.relative.y*mouseSensetivity,
+			$Camera.rotation.x-vertical_rotaion,
 			deg_to_rad(-60),
 			deg_to_rad(60)
 		)
