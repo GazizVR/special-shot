@@ -24,7 +24,7 @@ var target_velocity = Vector3.ZERO
 func _physics_process(delta: float) -> void:
 	var direction = Vector3.ZERO
 	if not is_on_floor():
-		if global_position.y < 0:
+		if global_position.y < 0.5:
 			global_position = Vector3(0,1,0)
 			return
 		direction.y -= gravity * delta
