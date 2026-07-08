@@ -27,7 +27,7 @@ func _physics_process(delta: float) -> void:
 	var direction = Vector3.ZERO
 	if not is_on_floor():
 		if global_position.y < 0.5:
-			global_position = Vector3(0,1,0)
+			global_position = Vector3(0,2,0)
 			return
 		direction.y -= gravity * delta
 		target_velocity.y = direction.y
@@ -37,14 +37,14 @@ func _physics_process(delta: float) -> void:
 			if is_crouch:
 				$Body.scale.y *= crouch_per
 				$Model.scale.y *= crouch_per
-				$Camera.global_position.y *= crouch_per
-				$Hand.global_position.y *= crouch_per
+				$Camera.position.y *= crouch_per
+				$Hand.position.y *= crouch_per
 				speed *= crouch_per
 			else:
 				$Body.scale.y /= crouch_per
 				$Model.scale.y /= crouch_per
-				$Camera.global_position.y /= crouch_per
-				$Hand.global_position.y /= crouch_per
+				$Camera.position.y /= crouch_per
+				$Hand.position.y /= crouch_per
 				speed /= crouch_per
 		if Input.is_action_pressed("walk_forward"):
 			direction += global_transform.basis.z
