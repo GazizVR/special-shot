@@ -6,13 +6,8 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		rotate_y(-event.relative.x*mouseSensetivity)
 		var vertical_rotaion = event.relative.y*mouseSensetivity
-		$Hand.rotation.x = clamp(
-			$Hand.rotation.x+vertical_rotaion,
-			deg_to_rad(-60),
-			deg_to_rad(90)
-		)
-		$Camera.rotation.x = clamp(
-			$Camera.rotation.x-vertical_rotaion,
+		$CamPivot.rotation.x = clamp(
+			$CamPivot.rotation.x+vertical_rotaion,
 			deg_to_rad(-60),
 			deg_to_rad(90)
 		)
@@ -37,14 +32,12 @@ func _physics_process(delta: float) -> void:
 			if is_crouch:
 				$Body.scale.y *= crouch_per
 				$Model.scale.y *= crouch_per
-				$Camera.position.y *= crouch_per
-				$Hand.position.y *= crouch_per
+				$CamPivot.position.y *= crouch_per
 				speed *= crouch_per
 			else:
 				$Body.scale.y /= crouch_per
 				$Model.scale.y /= crouch_per
-				$Camera.position.y /= crouch_per
-				$Hand.position.y /= crouch_per
+				$CamPivot.position.y /= crouch_per
 				speed /= crouch_per
 		if Input.is_action_pressed("walk_forward"):
 			direction += global_transform.basis.z

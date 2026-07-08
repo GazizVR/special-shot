@@ -16,8 +16,11 @@ shape = SubResource("CapsuleShape3D_g2els")
 [node name="Model" parent="." unique_id=1634859597 instance=ExtResource("1_3vyb7")]
 transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 0, 0, 0)
 
-[node name="Camera" type="Camera3D" parent="." unique_id=810746517]
+[node name="CamPivot" type="Node3D" parent="." unique_id=935450277]
+transform = Transform3D(0.1, 0, 0, 0, 0.10000001, 0, 0, 0, 0.10000001, 0, 1.4, 0.3)
+
+[node name="Camera" type="Camera3D" parent="CamPivot" unique_id=810746517]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 1.45, 0.25)
 
-[node name="Hand" type="Node3D" parent="." unique_id=265009307]
+[node name="Hand" type="Node3D" parent="CamPivot" unique_id=265009307]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75, 1, 1.25)
