@@ -16,13 +16,13 @@ albedo_color = Color(0.7607843, 0.69803923, 0.5019608, 1)
 [node name="game" type="Node3D" unique_id=731612117]
 script = ExtResource("1_78awf")
 
-[node name="floor" type="StaticBody3D" parent="." unique_id=1039886930]
-transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0.5, 0)
+[node name="Floor" type="StaticBody3D" parent="." unique_id=1039886930]
+transform = Transform3D(20, 0, 0, 0, 1, 0, 0, 0, 20, 0, 0.5, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="floor" unique_id=1026303837]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor" unique_id=1026303837]
 shape = SubResource("BoxShape3D_8cj0n")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="floor" unique_id=767500615]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor" unique_id=767500615]
 mesh = SubResource("BoxMesh_uwrxv")
 surface_material_override/0 = SubResource("StandardMaterial3D_8cj0n")
 

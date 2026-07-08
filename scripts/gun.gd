@@ -7,4 +7,5 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("shot"):
 		var copy = bullet.duplicate()
 		add_child(copy)
+		copy.top_level = true
 		copy.launch()

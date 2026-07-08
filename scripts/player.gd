@@ -18,7 +18,7 @@ func _input(event: InputEvent) -> void:
 		)
 		
 @export var speed = 8
-@export var gravity = 50
+@export var gravity = 100
 var target_velocity = Vector3.ZERO
 
 func _physics_process(delta: float) -> void:
