@@ -1,8 +1,9 @@
 [gd_scene format=3 uid="uid://c0iwtwwlag4pt"]
 
 [ext_resource type="Script" uid="uid://vara0lsm3f2m" path="res://scripts/menu.gd" id="1_yqeox"]
+[ext_resource type="Texture2D" uid="uid://cvlh5reuleewq" path="res://assets/pics/main_menu_bg.png" id="2_upctu"]
 
-[node name="menu" type="Control" unique_id=1652089702]
+[node name="Menu" type="Control" unique_id=1652089702]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -10,6 +11,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_yqeox")
+
+[node name="MenuBackground" type="TextureRect" parent="." unique_id=248395104]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_upctu")
 
 [node name="MainMenu" type="VBoxContainer" parent="." unique_id=1318785747]
 layout_mode = 1
@@ -30,7 +40,12 @@ alignment = 1
 [node name="PlayBtn" type="Button" parent="MainMenu" unique_id=1383492899]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
-text = "Play"
+text = "Host a game"
+
+[node name="Button" type="Button" parent="MainMenu" unique_id=415567783]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Join a game"
 
 [node name="QuitBtn" type="Button" parent="MainMenu" unique_id=1965170476]
 layout_mode = 2

@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bbl0hgeru6g3v"
-path="res://.godot/imported/Player.glb-78838af86bccc68eb0935dda6e95df24.scn"
+uid="uid://b0t43bhmpy62c"
+path="res://.godot/imported/Bullet.glb-0704c95880d127bd38b534f6b7d44618.scn"
 
 [deps]
 
-source_file="res://models/Player.glb"
-dest_files=["res://.godot/imported/Player.glb-78838af86bccc68eb0935dda6e95df24.scn"]
+source_file="res://assets/models/Bullet.glb"
+dest_files=["res://.godot/imported/Bullet.glb-0704c95880d127bd38b534f6b7d44618.scn"]
 
 [params]
 

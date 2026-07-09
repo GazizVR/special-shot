@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ulnt8khld6xx"]
 
-[ext_resource type="PackedScene" uid="uid://b0t43bhmpy62c" path="res://models/Bullet.glb" id="1_hf8mt"]
+[ext_resource type="PackedScene" uid="uid://b0t43bhmpy62c" path="res://assets/models/Bullet.glb" id="1_hf8mt"]
 [ext_resource type="Script" uid="uid://crhkkigqn8tv1" path="res://scripts/bullet.gd" id="1_p1sfj"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_h1aey"]
