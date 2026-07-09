@@ -1,7 +1,6 @@
 extends Node
 
 var peer: ENetMultiplayerPeer
-const HOST: String = "localhost"
 const PORT: int = 8080
 
 func init_server() -> void: 
@@ -9,7 +8,7 @@ func init_server() -> void:
 	peer.create_server(PORT)
 	multiplayer.multiplayer_peer = peer
 
-func init_client() -> void:
+func init_client(host: String) -> void:
 	peer = ENetMultiplayerPeer.new()
-	peer.create_client(HOST,PORT)
+	peer.create_client(host,PORT)
 	multiplayer.multiplayer_peer = peer

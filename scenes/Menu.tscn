@@ -37,12 +37,12 @@ grow_vertical = 2
 theme_override_constants/separation = 12
 alignment = 1
 
-[node name="PlayBtn" type="Button" parent="MainMenu" unique_id=1383492899]
+[node name="HostBtn" type="Button" parent="MainMenu" unique_id=1383492899]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "Host a game"
 
-[node name="Button" type="Button" parent="MainMenu" unique_id=415567783]
+[node name="JoinBtn" type="Button" parent="MainMenu" unique_id=415567783]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "Join a game"
@@ -52,6 +52,37 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "Quit"
 
-[connection signal="pressed" from="MainMenu/PlayBtn" to="." method="_on_play_btn_pressed"]
-[connection signal="pressed" from="MainMenu/Button" to="." method="_on_button_pressed"]
+[node name="JoinMenu" type="CenterContainer" parent="." unique_id=1414332702]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="JoinMenu" unique_id=1088250152]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="LineEdit" type="LineEdit" parent="JoinMenu/VBoxContainer" unique_id=1616256764]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "localhost"
+alignment = 1
+
+[node name="NextBtn" type="Button" parent="JoinMenu/VBoxContainer" unique_id=1245828897]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "next"
+
+[node name="BackBtn" type="Button" parent="JoinMenu/VBoxContainer" unique_id=1343662748]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "back"
+
+[connection signal="pressed" from="MainMenu/HostBtn" to="." method="_on_host_btn_pressed"]
+[connection signal="pressed" from="MainMenu/JoinBtn" to="." method="_on_join_btn_pressed"]
 [connection signal="pressed" from="MainMenu/QuitBtn" to="." method="_on_quit_btn_pressed"]
+[connection signal="pressed" from="JoinMenu/VBoxContainer/NextBtn" to="." method="_on_next_btn_pressed"]
+[connection signal="pressed" from="JoinMenu/VBoxContainer/BackBtn" to="." method="_on_back_btn_pressed"]
