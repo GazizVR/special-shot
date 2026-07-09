@@ -2,7 +2,7 @@ extends Node
 
 var peer: ENetMultiplayerPeer
 const HOST: String = "localhost"
-const PORT: int = 3333
+const PORT: int = 8080
 
 func init_server() -> void: 
 	peer = ENetMultiplayerPeer.new()

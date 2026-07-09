@@ -2,6 +2,9 @@ extends CharacterBody3D
 
 @export var mouseSensetivity = 0.001
 
+func to_hand(node: Node3D) -> void:
+	$CamPivot/Hand.add_child(node)
+
 func _enter_tree() -> void:
 	set_multiplayer_authority(name.to_int())
 	$CamPivot/Camera.current = is_multiplayer_authority()

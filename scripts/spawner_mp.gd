@@ -12,3 +12,8 @@ func spawn_player(id: int) -> void:
 	var player = network_player.instantiate()
 	player.name = str(id)
 	get_node(spawn_path).call_deferred("add_child",player)
+	
+	var gunScene = preload("res://scenes/Gun.tscn")
+	var gun = gunScene.instantiate()
+	player.call_deferred("to_hand",gun)
+	
