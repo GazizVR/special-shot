@@ -2,8 +2,20 @@
 
 [ext_resource type="PackedScene" uid="uid://bbl0hgeru6g3v" path="res://assets/models/Player.glb" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://govfvmcim26r" path="res://scripts/player.gd" id="1_g2els"]
+[ext_resource type="Script" uid="uid://cjlj2lm1xcx6a" path="res://scripts/aim.gd" id="3_3li8b"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_g2els"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_3li8b"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath("CamPivot:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath(".:rotation")
+properties/2/spawn = true
+properties/2/replication_mode = 1
 
 [node name="Player" type="CharacterBody3D" unique_id=457187399]
 transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 0, 0)
@@ -24,3 +36,23 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 1
 
 [node name="Hand" type="Node3D" parent="CamPivot" unique_id=265009307]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75, 1, 1.25)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=376558683]
+
+[node name="Aim" type="Control" parent="CanvasLayer" unique_id=1776340400]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_3li8b")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=1389830567]
+replication_config = SubResource("SceneReplicationConfig_3li8b")

@@ -2,7 +2,12 @@ extends CharacterBody3D
 
 @export var mouseSensetivity = 0.001
 
+func _enter_tree() -> void:
+	set_multiplayer_authority(name.to_int())
+	$CamPivot/Camera.current = is_multiplayer_authority()
+
 func _input(event: InputEvent) -> void:
+	if !is_multiplayer_authority(): return
 	if event is InputEventMouseMotion:
 		rotate_y(-event.relative.x*mouseSensetivity)
 		var vertical_rotaion = event.relative.y*mouseSensetivity
@@ -19,6 +24,7 @@ var is_crouch = false
 @export var crouch_per = 0.6
 
 func _physics_process(delta: float) -> void:
+	if !is_multiplayer_authority(): return
 	var direction = Vector3.ZERO
 	if not is_on_floor():
 		if global_position.y < 0.5:

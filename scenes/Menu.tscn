@@ -53,4 +53,5 @@ theme_override_font_sizes/font_size = 50
 text = "Quit"
 
 [connection signal="pressed" from="MainMenu/PlayBtn" to="." method="_on_play_btn_pressed"]
+[connection signal="pressed" from="MainMenu/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="MainMenu/QuitBtn" to="." method="_on_quit_btn_pressed"]

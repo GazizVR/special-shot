@@ -1,9 +1,8 @@
 [gd_scene format=3 uid="uid://dehmeu5kji8hw"]
 
-[ext_resource type="Script" uid="uid://jj53ghke28ne" path="res://scripts/game.gd" id="1_78awf"]
+[ext_resource type="Script" uid="uid://cqifgxhcdng7p" path="res://scripts/spawner_mp.gd" id="2_qbsmt"]
 [ext_resource type="PackedScene" uid="uid://b8oxkj8oidru1" path="res://scenes/Player.tscn" id="2_s0nni"]
 [ext_resource type="Script" uid="uid://c361cv3uh8km8" path="res://scripts/pause.gd" id="3_aug50"]
-[ext_resource type="Script" uid="uid://cjlj2lm1xcx6a" path="res://scripts/aim.gd" id="4_kiw3p"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8cj0n"]
 
@@ -14,7 +13,6 @@ shading_mode = 0
 albedo_color = Color(0.7607843, 0.69803923, 0.5019608, 1)
 
 [node name="game" type="Node3D" unique_id=731612117]
-script = ExtResource("1_78awf")
 
 [node name="Floor" type="StaticBody3D" parent="." unique_id=1039886930]
 transform = Transform3D(20, 0, 0, 0, 1, 0, 0, 0, 20, 0, 0.5, 0)
@@ -29,13 +27,10 @@ surface_material_override/0 = SubResource("StandardMaterial3D_8cj0n")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=227133486]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 8.49139, 0)
 
-[node name="Player" parent="." unique_id=457187399 instance=ExtResource("2_s0nni")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
-
-[node name="GUI" type="CanvasLayer" parent="." unique_id=2086990315]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2086990315]
 process_mode = 3
 
-[node name="PauseMenu" type="Control" parent="GUI" unique_id=2069157707]
+[node name="PauseMenu" type="Control" parent="CanvasLayer" unique_id=2069157707]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -44,7 +39,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("3_aug50")
 
-[node name="PauseBG" type="ColorRect" parent="GUI/PauseMenu" unique_id=1331128661]
+[node name="PauseBG" type="ColorRect" parent="CanvasLayer/PauseMenu" unique_id=1331128661]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -54,7 +49,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.011764706, 0.011764706, 0.011764706, 0.49019608)
 
-[node name="PauseCnt" type="VBoxContainer" parent="GUI/PauseMenu" unique_id=1782778534]
+[node name="PauseCnt" type="VBoxContainer" parent="CanvasLayer/PauseMenu" unique_id=1782778534]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -71,37 +66,28 @@ grow_vertical = 2
 theme_override_constants/separation = 12
 alignment = 1
 
-[node name="Pause" type="Label" parent="GUI/PauseMenu/PauseCnt" unique_id=673292372]
+[node name="Pause" type="Label" parent="CanvasLayer/PauseMenu/PauseCnt" unique_id=673292372]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "Pause"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Continue" type="Button" parent="GUI/PauseMenu/PauseCnt" unique_id=714104993]
+[node name="Continue" type="Button" parent="CanvasLayer/PauseMenu/PauseCnt" unique_id=714104993]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "Continue"
 
-[node name="MenuBtn" type="Button" parent="GUI/PauseMenu/PauseCnt" unique_id=291588637]
+[node name="MenuBtn" type="Button" parent="CanvasLayer/PauseMenu/PauseCnt" unique_id=291588637]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "Menu"
 
-[node name="Aim" type="Control" parent="GUI" unique_id=1347646664]
-layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("4_kiw3p")
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="." unique_id=1452207389]
+_spawnable_scenes = PackedStringArray("uid://b8oxkj8oidru1")
+spawn_path = NodePath("..")
+script = ExtResource("2_qbsmt")
+network_player = ExtResource("2_s0nni")
 
-[connection signal="pressed" from="GUI/PauseMenu/PauseCnt/Continue" to="GUI/PauseMenu" method="_on_continue_pressed"]
-[connection signal="pressed" from="GUI/PauseMenu/PauseCnt/MenuBtn" to="GUI/PauseMenu" method="_on_menu_btn_pressed"]
+[connection signal="pressed" from="CanvasLayer/PauseMenu/PauseCnt/Continue" to="CanvasLayer/PauseMenu" method="_on_continue_pressed"]
+[connection signal="pressed" from="CanvasLayer/PauseMenu/PauseCnt/MenuBtn" to="CanvasLayer/PauseMenu" method="_on_menu_btn_pressed"]
