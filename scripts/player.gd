@@ -82,7 +82,7 @@ func _physics_process(delta: float) -> void:
 
 @rpc("authority","call_local","reliable")
 func _on_gun_bullet_touched(bullet: Area3D, body: Node3D) -> void:
-	remove_child(bullet)
+	$CamPivot/Hand/Gun.remove_child(bullet)
 	var peer_id = body.name
 	var peer_node_path = "/root/game/" + peer_id
 	var peer_node = get_node(peer_node_path)
