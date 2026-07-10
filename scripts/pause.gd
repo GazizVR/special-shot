@@ -14,9 +14,9 @@ func _input(event: InputEvent) -> void:
 			$PauseCnt.visible = false
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 		get_tree().paused = isPaused
+		
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-
 
 func _on_continue_pressed() -> void:
 	isPaused = false
@@ -27,4 +27,5 @@ func _on_continue_pressed() -> void:
 
 func _on_menu_btn_pressed() -> void:
 	get_tree().paused = false
+	multiplayer.multiplayer_peer.close()
 	get_tree().change_scene_to_file("res://scenes/Menu.tscn")

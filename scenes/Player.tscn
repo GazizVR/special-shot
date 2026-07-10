@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bbl0hgeru6g3v" path="res://assets/models/Player.glb" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://govfvmcim26r" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="Script" uid="uid://cjlj2lm1xcx6a" path="res://scripts/aim.gd" id="3_3li8b"]
+[ext_resource type="PackedScene" uid="uid://dfgm1lnq7yylj" path="res://scenes/Gun.tscn" id="3_mdl7e"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_g2els"]
 
@@ -36,6 +37,8 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 1
 
 [node name="Hand" type="Node3D" parent="CamPivot" unique_id=265009307]
 transform = Transform3D(1, 0, -1.4210855e-14, 0, 1, 0, 0, 0, 1, -4, -1, 7)
+
+[node name="Gun" parent="CamPivot/Hand" unique_id=1689518192 instance=ExtResource("3_mdl7e")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=376558683]
 
