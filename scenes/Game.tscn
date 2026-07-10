@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://dehmeu5kji8hw"]
 
+[ext_resource type="Script" uid="uid://ddwjo6o6qk1p" path="res://scenes/game.gd" id="1_cpr0p"]
 [ext_resource type="Script" uid="uid://cqifgxhcdng7p" path="res://scripts/spawner_mp.gd" id="2_qbsmt"]
 [ext_resource type="PackedScene" uid="uid://b8oxkj8oidru1" path="res://scenes/Player.tscn" id="2_s0nni"]
-[ext_resource type="Script" uid="uid://c361cv3uh8km8" path="res://scripts/pause.gd" id="3_aug50"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8cj0n"]
 
@@ -13,6 +13,7 @@ shading_mode = 0
 albedo_color = Color(0.7607843, 0.69803923, 0.5019608, 1)
 
 [node name="game" type="Node3D" unique_id=731612117]
+script = ExtResource("1_cpr0p")
 
 [node name="Floor" type="StaticBody3D" parent="." unique_id=1039886930]
 transform = Transform3D(20, 0, 0, 0, 1, 0, 0, 0, 20, 0, 0.5, 0)
@@ -37,7 +38,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("3_aug50")
 
 [node name="PauseBG" type="ColorRect" parent="CanvasLayer/PauseMenu" unique_id=1331128661]
 visible = false
@@ -89,5 +89,5 @@ spawn_path = NodePath("..")
 script = ExtResource("2_qbsmt")
 network_player = ExtResource("2_s0nni")
 
-[connection signal="pressed" from="CanvasLayer/PauseMenu/PauseCnt/Continue" to="CanvasLayer/PauseMenu" method="_on_continue_pressed"]
-[connection signal="pressed" from="CanvasLayer/PauseMenu/PauseCnt/MenuBtn" to="CanvasLayer/PauseMenu" method="_on_menu_btn_pressed"]
+[connection signal="pressed" from="CanvasLayer/PauseMenu/PauseCnt/Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="CanvasLayer/PauseMenu/PauseCnt/MenuBtn" to="." method="_on_menu_btn_pressed"]

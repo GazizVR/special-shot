@@ -1,6 +1,6 @@
 extends Area3D
 
-@export var speed = 2
+@export var speed = 4
 var is_launch: bool = false
 
 func launch():
@@ -9,4 +9,3 @@ func launch():
 func _physics_process(_delta: float) -> void:
 	if is_launch:
 		global_position += global_transform.basis.y*speed
-		

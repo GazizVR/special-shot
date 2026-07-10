@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bbl0hgeru6g3v" path="res://assets/models/Player.glb" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://govfvmcim26r" path="res://scripts/player.gd" id="1_g2els"]
-[ext_resource type="Script" uid="uid://cjlj2lm1xcx6a" path="res://scripts/aim.gd" id="3_3li8b"]
+[ext_resource type="Script" uid="uid://cjlj2lm1xcx6a" path="res://scripts/player_gui.gd" id="3_3li8b"]
 [ext_resource type="PackedScene" uid="uid://dfgm1lnq7yylj" path="res://scenes/Gun.tscn" id="3_mdl7e"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_g2els"]
@@ -43,7 +43,7 @@ transform = Transform3D(1, 0, -1.4210855e-14, 0, 1, 0, 0, 0, 1, -4, -1, 7)
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=376558683]
 process_mode = 3
 
-[node name="Aim" type="Control" parent="CanvasLayer" unique_id=1776340400]
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=1776340400]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -58,5 +58,16 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("3_3li8b")
 
+[node name="HPLabel" type="Label" parent="CanvasLayer/Control" unique_id=914208432]
+layout_mode = 1
+offset_left = -556.0
+offset_top = -304.0
+offset_right = -475.0
+offset_bottom = -235.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_font_sizes/font_size = 50
+
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=1389830567]
 replication_config = SubResource("SceneReplicationConfig_3li8b")
+
+[connection signal="bullet_touched" from="CamPivot/Hand/Gun" to="." method="_on_gun_bullet_touched"]

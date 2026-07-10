@@ -1,11 +1,11 @@
 extends CharacterBody3D
 
 @export var mouseSensetivity = 0.001
+var is_paused = false
 
 func return_to_menu():
 	if get_tree() != null:
 		multiplayer.multiplayer_peer.close()
-		get_tree().paused = false
 		get_tree().change_scene_to_file("res://scenes/Menu.tscn")
 
 func _enter_tree() -> void:
@@ -13,6 +13,7 @@ func _enter_tree() -> void:
 	$CamPivot/Camera.current = is_multiplayer_authority()
 
 func _input(event: InputEvent) -> void:
+	if is_paused: return
 	if !is_multiplayer_authority(): return
 	if event is InputEventMouseMotion:
 		rotate_y(-event.relative.x*mouseSensetivity)
@@ -28,9 +29,21 @@ func _input(event: InputEvent) -> void:
 var target_velocity = Vector3.ZERO
 var is_crouch = false
 @export var crouch_per = 0.6
+@export var health = 100
+
+func _process(delta: float) -> void:
+	if is_paused: return
+	if !is_multiplayer_authority(): return
+	$CanvasLayer/Control/HPLabel.text = "HP " + str(health)
 
 func _physics_process(delta: float) -> void:
+	if is_paused: return
 	if !is_multiplayer_authority(): return
+	if health < 1:
+		velocity = Vector3(0,0,0)
+		global_position = Vector3(0,3,0)
+		health = 100
+		return
 	var direction = Vector3.ZERO
 	if not is_on_floor():
 		if global_position.y < 0.5:
@@ -65,3 +78,19 @@ func _physics_process(delta: float) -> void:
 		target_velocity.z = direction.z * speed
 	velocity = target_velocity
 	move_and_slide()
+
+@rpc("authority","call_local","reliable")
+func _on_gun_bullet_touched(bullet: Area3D, body: Node3D) -> void:
+	remove_child(bullet)
+	var peer_id = body.name
+	var peer_node_path = "/root/game/" + peer_id
+	var peer_node = get_node(peer_node_path)
+	if is_instance_valid(peer_node):
+		if peer_node is CharacterBody3D:
+			peer_node.health -= 20
+
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_PAUSED:
+		is_paused = true
+	if what == NOTIFICATION_UNPAUSED:
+		is_paused = false
