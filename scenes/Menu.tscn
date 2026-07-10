@@ -66,6 +66,13 @@ theme_override_font_sizes/font_size = 50
 text = "8081"
 placeholder_text = "port"
 
+[node name="ErrLabel" type="Label" parent="HostMenu" unique_id=1047974689]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.27058825, 0.27058825, 1)
+theme_override_font_sizes/font_size = 50
+vertical_alignment = 1
+
 [node name="StartBtn" type="Button" parent="HostMenu" unique_id=821388330]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
@@ -104,6 +111,11 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "8081"
 placeholder_text = "port"
+
+[node name="ErrLabel" type="Label" parent="JoinMenu" unique_id=1405340565]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.27058825, 0.27058825, 1)
+theme_override_font_sizes/font_size = 50
 
 [node name="ConnectBtn" type="Button" parent="JoinMenu" unique_id=1245828897]
 layout_mode = 2

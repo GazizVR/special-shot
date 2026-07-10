@@ -2,12 +2,16 @@ extends Node
 
 var peer: ENetMultiplayerPeer
 
-func init_server(port: int) -> void: 
+func init_server(port: int) -> Error:
+	var error: Error = Error.OK
 	peer = ENetMultiplayerPeer.new()
-	peer.create_server(port)
+	error = peer.create_server(port)
 	multiplayer.multiplayer_peer = peer
+	return error
 
-func init_client(host: String,port: int) -> void:
+func init_client(host: String,port: int) -> Error:
+	var error: Error = Error.OK
 	peer = ENetMultiplayerPeer.new()
-	peer.create_client(host,port)
+	error = peer.create_client(host,port)
 	multiplayer.multiplayer_peer = peer
+	return error
