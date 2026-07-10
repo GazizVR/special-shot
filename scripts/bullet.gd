@@ -1,6 +1,6 @@
 extends Area3D
 
-@export var speed = 4
+@export var speed = 1
 var is_launch: bool = false
 
 func launch():

@@ -25,7 +25,7 @@ func _input(event: InputEvent) -> void:
 		)
 		
 @export var speed = 8
-@export var gravity = 100
+@export var gravity = 10
 var target_velocity = Vector3.ZERO
 var is_crouch = false
 @export var crouch_per = 0.6
@@ -37,21 +37,22 @@ func _process(delta: float) -> void:
 	$CanvasLayer/Control/HPLabel.text = "HP " + str(health)
 
 func _physics_process(delta: float) -> void:
-	if is_paused: return
 	if !is_multiplayer_authority(): return
 	if health < 1:
 		velocity = Vector3(0,0,0)
 		global_position = Vector3(0,3,0)
 		health = 100
-		return
-	var direction = Vector3.ZERO
 	if not is_on_floor():
-		if global_position.y < 0.5:
-			global_position = Vector3(0,2,0)
+		if global_position.y < -2:
+			health = 0
 			return
-		direction.y -= gravity * delta
-		target_velocity.y = direction.y
-	else:
+		target_velocity.y -= gravity * delta
+		velocity.y = target_velocity.y
+	if is_paused:
+		move_and_slide()
+		return	
+	var direction = Vector3.ZERO
+	if is_on_floor():
 		if Input.is_action_just_pressed("crouch"):
 			is_crouch = !is_crouch
 			if is_crouch:
