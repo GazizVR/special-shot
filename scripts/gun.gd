@@ -4,9 +4,11 @@ extends Node3D
 var can_shot = true
 
 func _physics_process(_delta: float) -> void:
+	if !is_multiplayer_authority(): return
 	if Input.is_action_just_pressed("shot") and can_shot:
-		shot()
+		shot.rpc()
 
+@rpc("authority","call_local","reliable")
 func shot():
 	can_shot = false
 	var copy = bullet.duplicate()
