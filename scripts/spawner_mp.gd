@@ -18,7 +18,7 @@ func spawn_player(id: int) -> void:
 func stop_server() -> void:
 	var root = get_node(spawn_path)
 	for child in root.get_children():
-		child.call_thread_safe("return_to_menu")
+		child.call_deferred("return_to_menu")
 
 func despawn_player(id: int) -> void: 
 	if !multiplayer.is_server(): return

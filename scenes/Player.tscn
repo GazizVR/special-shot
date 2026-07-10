@@ -41,6 +41,7 @@ transform = Transform3D(1, 0, -1.4210855e-14, 0, 1, 0, 0, 0, 1, -4, -1, 7)
 [node name="Gun" parent="CamPivot/Hand" unique_id=1689518192 instance=ExtResource("3_mdl7e")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=376558683]
+process_mode = 3
 
 [node name="Aim" type="Control" parent="CanvasLayer" unique_id=1776340400]
 layout_mode = 3
