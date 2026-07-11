@@ -20,6 +20,7 @@ func shot():
 	add_child(copy)
 	copy.visible = true
 	copy.top_level = true
+	copy.shooter = owner
 	copy.launch()
 	await get_tree().create_timer(0.5).timeout
 	can_shot = true

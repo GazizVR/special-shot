@@ -2,6 +2,7 @@ extends CharacterBody3D
 
 @export var mouseSensetivity = 0.001
 var is_paused = false
+var team = PlayerData.Team.UNKNOWN
 
 func return_to_menu():
 	if get_tree() != null:
@@ -21,7 +22,7 @@ func _input(event: InputEvent) -> void:
 		var vertical_rotaion = event.relative.y*mouseSensetivity
 		$CamPivot.rotation.x = clamp(
 			$CamPivot.rotation.x+vertical_rotaion,
-			deg_to_rad(-60),
+			deg_to_rad(-75),
 			deg_to_rad(90)
 		)
 		
@@ -83,13 +84,15 @@ func _physics_process(delta: float) -> void:
 
 @rpc("authority","call_local","reliable")
 func _on_gun_bullet_touched(bullet: Area3D, body: Node3D) -> void:
-	$CamPivot/Hand/Gun.remove_child(bullet)
+	$CamPivot/Hand/Gun.call_deferred("remove_child",bullet)
 	var peer_id = body.name
 	var peer_node_path = "/root/game/" + peer_id
 	var peer_node = get_node(peer_node_path)
 	if is_instance_valid(peer_node):
-		if peer_node is CharacterBody3D and bullet.visible:
-			peer_node.health -= 20
+		if peer_node.has_method("team") and bullet.shooter.has_method("team"):
+			if peer_node.team != bullet.shooter.team:
+				if peer_node.has_method("health"):
+					peer_node.health -= 20
 
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_PAUSED:
