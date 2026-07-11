@@ -69,14 +69,18 @@ func _ready() -> void:
 func connected() -> void:
 	get_tree().change_scene_to_file("res://scenes/Game.tscn")
 
+var has_timer = false
+
 func connection_failed() -> void:
 	$JoinMenu/ErrLabel.text = "Error: Connection failed"
-	$Teamenu.visible = false
+	$TeamMenu.visible = false
+	has_timer = false
 	$JoinMenu.visible = true
 
 func _on_team_back_btn_pressed() -> void:
 	multiplayer.multiplayer_peer.close()
 	$TeamMenu.visible = false
+	has_timer = false
 	match cnn_type:
 		ConnectionType.Host:
 			$HostMenu.visible = true
@@ -90,19 +94,33 @@ func _on_zero_team_btn_pressed() -> void:
 	if cnn_type == ConnectionType.Host:
 		get_tree().change_scene_to_file("res://scenes/Game.tscn")
 	if cnn_type == ConnectionType.Join:
-		var error: Error = Error.OK
-		error = NetworkHandler.init_client(host,port)
-		if error != Error.OK:
-			$JoinMenu/ErrLabel.text = "Error: code " + str(error)
-			_on_team_back_btn_pressed()
+		if !has_timer:
+			has_timer = true
+			
+			var error: Error = Error.OK
+			error = NetworkHandler.init_client(host,port)
+			if error != Error.OK:
+				$JoinMenu/ErrLabel.text = "Error: code " + str(error)
+				_on_team_back_btn_pressed()
+		
+			await get_tree().create_timer(3).timeout
+			if multiplayer.multiplayer_peer.get_connection_status() == MultiplayerPeer.CONNECTION_CONNECTING:
+				multiplayer.multiplayer_peer.close()
 
 func _on_unit_team_btn_pressed() -> void:
 	GameManager.selected_team = GameManager.Team.UNIT
 	if cnn_type == ConnectionType.Host:
 		get_tree().change_scene_to_file("res://scenes/Game.tscn")
 	if cnn_type == ConnectionType.Join:
-		var error: Error = Error.OK
-		error = NetworkHandler.init_client(host,port)
-		if error != Error.OK:
-			$JoinMenu/ErrLabel.text = "Error: code " + str(error)
-			_on_team_back_btn_pressed()
+		if !has_timer:
+			has_timer = true
+			
+			var error: Error = Error.OK
+			error = NetworkHandler.init_client(host,port)
+			if error != Error.OK:
+				$JoinMenu/ErrLabel.text = "Error: code " + str(error)
+				_on_team_back_btn_pressed()
+		
+			await get_tree().create_timer(3).timeout
+			if multiplayer.multiplayer_peer.get_connection_status() == MultiplayerPeer.CONNECTION_CONNECTING:
+				multiplayer.multiplayer_peer.close()
