@@ -34,6 +34,7 @@ transform = Transform3D(0.1, 0, 0, 0, 0.10000001, 0, 0, 0, 0.10000001, 0, 1.4, 0
 
 [node name="Camera" type="Camera3D" parent="CamPivot" unique_id=810746517]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 1.45, 0.25)
+far = 1000.0
 
 [node name="Hand" type="Node3D" parent="CamPivot" unique_id=265009307]
 transform = Transform3D(1, 0, -1.4210855e-14, 0, 1, 0, 0, 0, 1, -4, -1, 7)
