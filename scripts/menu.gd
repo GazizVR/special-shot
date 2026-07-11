@@ -38,11 +38,7 @@ func _on_connect_btn_pressed() -> void:
 	if error != Error.OK:
 		$JoinMenu/ErrLabel.text = "Error: code " + str(error)
 		return
-	error = get_tree().change_scene_to_file("res://scenes/Game.tscn")
-	if error != Error.OK:
-		$JoinMenu/ErrLabel.text = "Error: code " + str(error)
-		return
-
+	
 func _on_start_btn_pressed() -> void:
 	var port: int
 	var port_str: String = $HostMenu/PortEdit.text
@@ -56,11 +52,25 @@ func _on_start_btn_pressed() -> void:
 	if error != Error.OK:
 		$HostMenu/ErrLabel.text = "Error: code " + str(error)
 		return
-	error = get_tree().change_scene_to_file("res://scenes/Game.tscn")
+	error = get_tree().change_scene_to_file("res://scenes/Game.tscn")	
 	if error != Error.OK:
 		$HostMenu/ErrLabel.text = "Error: code " + str(error)
 		return
-
+	
 func _on_host_back_btn_pressed() -> void:
 	$HostMenu.visible = false
 	$MainMenu.visible = true
+	
+func _ready() -> void:
+	multiplayer.connected_to_server.connect(connected)
+	multiplayer.connection_failed.connect(connection_failed)
+	
+func connected() -> void:
+	var error: Error = Error.OK
+	error = get_tree().change_scene_to_file("res://scenes/Game.tscn")	
+	if error != Error.OK:
+		$JoinMenu/ErrLabel.text = "Error: code " + str(error)
+		return
+
+func connection_failed() -> void:
+	$JoinMenu/ErrLabel.text = "Error: Connection failed"
