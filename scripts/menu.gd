@@ -20,30 +20,28 @@ func _on_join_back_btn_pressed() -> void:
 	$JoinMenu.visible = false
 	$MainMenu.visible = true
 
-func _on_connect_btn_pressed() -> void:
-	var host: String = $JoinMenu/HostEdit.text
+var host: String
+var port: int
+
+func _on_next_btn_pressed() -> void:
+	host = $JoinMenu/HostEdit.text
 	if host.is_empty():
 		$JoinMenu/ErrLabel.text = "Error: Invalid host"
 		return
 		
-	var port: int
 	var port_str: String = $JoinMenu/PortEdit.text
 	if !port_str.is_valid_int():
 		$JoinMenu/ErrLabel.text = "Error: Invalid port"
 		return
 	port = port_str.to_int()
-	
-	var error: Error = Error.OK
-	error = NetworkHandler.init_client(host,port)
-	if error != Error.OK:
-		$JoinMenu/ErrLabel.text = "Error: code " + str(error)
-		return
+	cnn_type = ConnectionType.Join
+	$JoinMenu.visible = false
+	$TeamMenu.visible = true
 
 enum ConnectionType{Host,Join}
 var cnn_type: ConnectionType
 	
 func _on_start_btn_pressed() -> void:
-	var port: int
 	var port_str: String = $HostMenu/PortEdit.text
 	if !port_str.is_valid_int():
 		$HostMenu/ErrLabel.text = "Error: Invalid port"
@@ -69,12 +67,12 @@ func _ready() -> void:
 	multiplayer.connection_failed.connect(connection_failed)
 	
 func connected() -> void:
-	cnn_type = ConnectionType.Join
-	$JoinMenu.visible = false
-	$TeamMenu.visible = true
+	get_tree().change_scene_to_file("res://scenes/Game.tscn")
 
 func connection_failed() -> void:
 	$JoinMenu/ErrLabel.text = "Error: Connection failed"
+	$Teamenu.visible = false
+	$JoinMenu.visible = true
 
 func _on_team_back_btn_pressed() -> void:
 	multiplayer.multiplayer_peer.close()
@@ -89,8 +87,22 @@ func _on_team_back_btn_pressed() -> void:
 
 func _on_zero_team_btn_pressed() -> void:
 	GameManager.selected_team = GameManager.Team.ZERO
-	get_tree().change_scene_to_file("res://scenes/Game.tscn")
+	if cnn_type == ConnectionType.Host:
+		get_tree().change_scene_to_file("res://scenes/Game.tscn")
+	if cnn_type == ConnectionType.Join:
+		var error: Error = Error.OK
+		error = NetworkHandler.init_client(host,port)
+		if error != Error.OK:
+			$JoinMenu/ErrLabel.text = "Error: code " + str(error)
+			_on_team_back_btn_pressed()
 
 func _on_unit_team_btn_pressed() -> void:
 	GameManager.selected_team = GameManager.Team.UNIT
-	get_tree().change_scene_to_file("res://scenes/Game.tscn")
+	if cnn_type == ConnectionType.Host:
+		get_tree().change_scene_to_file("res://scenes/Game.tscn")
+	if cnn_type == ConnectionType.Join:
+		var error: Error = Error.OK
+		error = NetworkHandler.init_client(host,port)
+		if error != Error.OK:
+			$JoinMenu/ErrLabel.text = "Error: code " + str(error)
+			_on_team_back_btn_pressed()
