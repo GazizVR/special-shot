@@ -12,6 +12,9 @@ func return_to_menu():
 
 func _enter_tree() -> void:
 	set_multiplayer_authority(name.to_int())
+	$CamPivot/Camera.current = is_multiplayer_authority()
+
+func _ready() -> void:
 	team = GameManager.selected_team
 	match team:
 		GameManager.Team.ZERO:
@@ -20,7 +23,6 @@ func _enter_tree() -> void:
 			global_position = Vector3(20,2,0)
 		_:
 			global_position = Vector3(0,2,0)
-	$CamPivot/Camera.current = is_multiplayer_authority()
 
 func _input(event: InputEvent) -> void:
 	if is_paused: return
@@ -97,10 +99,8 @@ func _on_gun_bullet_touched(bullet: Area3D, body: Node3D) -> void:
 	var peer_node_path = "/root/game/" + peer_id
 	var peer_node = get_node(peer_node_path)
 	if is_instance_valid(peer_node):
-		if peer_node.has_method("team") and bullet.shooter.has_method("team"):
-			if peer_node.team != bullet.shooter.team:
-				if peer_node.has_method("health"):
-					peer_node.health -= 20
+		if peer_node.has_method("health"):
+			peer_node.health -= 20
 
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_PAUSED:

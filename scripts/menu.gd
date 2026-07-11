@@ -10,11 +10,6 @@ func _on_host_btn_pressed() -> void:
 func _on_join_btn_pressed() -> void:
 	$MainMenu.visible = false
 	$JoinMenu.visible = true
-
-func _input(event: InputEvent) -> void:
-	if Input.is_action_just_pressed("pause") and $JoinMenu.visible:
-		$JoinMenu.visible = false
-		$MainMenu.visible = true
 	
 func _on_join_back_btn_pressed() -> void:
 	$JoinMenu.visible = false
