@@ -52,10 +52,8 @@ func _on_start_btn_pressed() -> void:
 	if error != Error.OK:
 		$HostMenu/ErrLabel.text = "Error: code " + str(error)
 		return
-	error = get_tree().change_scene_to_file("res://scenes/Game.tscn")	
-	if error != Error.OK:
-		$HostMenu/ErrLabel.text = "Error: code " + str(error)
-		return
+	$HostMenu.visible = false
+	$TeamMenu.visible = true
 	
 func _on_host_back_btn_pressed() -> void:
 	$HostMenu.visible = false
@@ -66,11 +64,8 @@ func _ready() -> void:
 	multiplayer.connection_failed.connect(connection_failed)
 	
 func connected() -> void:
-	var error: Error = Error.OK
-	error = get_tree().change_scene_to_file("res://scenes/Game.tscn")	
-	if error != Error.OK:
-		$JoinMenu/ErrLabel.text = "Error: code " + str(error)
-		return
+	$JoinMenu.visible = false
+	$TeamMenu.visible = true
 
 func connection_failed() -> void:
 	$JoinMenu/ErrLabel.text = "Error: Connection failed"

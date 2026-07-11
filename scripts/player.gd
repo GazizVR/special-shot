@@ -2,7 +2,17 @@ extends CharacterBody3D
 
 @export var mouseSensetivity = 0.001
 var is_paused = false
-var team = PlayerData.Team.UNKNOWN
+var team: GameManager.Team = GameManager.Team.UNKNOWN
+
+func _ready() -> void:
+	team = GameManager.selected_team
+	match team:
+		GameManager.Team.ZERO:
+			global_position = Vector3(0,0,0)
+		GameManager.Team.ZERO:
+			global_position = Vector3(0,0,0)
+		_:
+			global_position = Vector3(0,0,0)
 
 func return_to_menu():
 	if get_tree() != null:

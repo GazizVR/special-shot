@@ -131,6 +131,50 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "back"
 
+[node name="TeamMenu" type="VBoxContainer" parent="." unique_id=2023343212]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.5
+offset_top = -119.5
+offset_right = 160.5
+offset_bottom = 119.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="Label" type="Label" parent="TeamMenu" unique_id=411799145]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "select a team"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TeamMenu" unique_id=672780924]
+layout_mode = 2
+theme_override_constants/separation = 4
+alignment = 1
+
+[node name="ZeroTBtn" type="Button" parent="TeamMenu/HBoxContainer" unique_id=668933658]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 100
+text = "  0  "
+
+[node name="UnitTBtn" type="Button" parent="TeamMenu/HBoxContainer" unique_id=1529178265]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 1, 1)
+theme_override_font_sizes/font_size = 100
+text = "  1  "
+
+[node name="Button" type="Button" parent="TeamMenu" unique_id=627432199]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "back"
+
 [connection signal="pressed" from="MainMenu/HostBtn" to="." method="_on_host_btn_pressed"]
 [connection signal="pressed" from="MainMenu/JoinBtn" to="." method="_on_join_btn_pressed"]
 [connection signal="pressed" from="MainMenu/QuitBtn" to="." method="_on_quit_btn_pressed"]
