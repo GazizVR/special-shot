@@ -4,16 +4,6 @@ extends CharacterBody3D
 var is_paused = false
 var team: GameManager.Team = GameManager.Team.UNKNOWN
 
-func _ready() -> void:
-	team = GameManager.selected_team
-	match team:
-		GameManager.Team.ZERO:
-			global_position = Vector3(0,0,0)
-		GameManager.Team.ZERO:
-			global_position = Vector3(0,0,0)
-		_:
-			global_position = Vector3(0,0,0)
-
 func return_to_menu():
 	if get_tree() != null:
 		multiplayer.multiplayer_peer.close()
@@ -22,6 +12,14 @@ func return_to_menu():
 
 func _enter_tree() -> void:
 	set_multiplayer_authority(name.to_int())
+	team = GameManager.selected_team
+	match team:
+		GameManager.Team.ZERO:
+			global_position = Vector3(-20,2,0)
+		GameManager.Team.UNIT:
+			global_position = Vector3(20,2,0)
+		_:
+			global_position = Vector3(0,2,0)
 	$CamPivot/Camera.current = is_multiplayer_authority()
 
 func _input(event: InputEvent) -> void:
@@ -106,6 +104,7 @@ func _on_gun_bullet_touched(bullet: Area3D, body: Node3D) -> void:
 
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_PAUSED:
+		velocity = Vector3.ZERO
 		is_paused = true
 	if what == NOTIFICATION_UNPAUSED:
 		is_paused = false

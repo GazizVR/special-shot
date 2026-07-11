@@ -152,25 +152,27 @@ alignment = 1
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "select a team"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="TeamMenu" unique_id=672780924]
 layout_mode = 2
 theme_override_constants/separation = 4
 alignment = 1
 
-[node name="ZeroTBtn" type="Button" parent="TeamMenu/HBoxContainer" unique_id=668933658]
+[node name="ZeroTeamBtn" type="Button" parent="TeamMenu/HBoxContainer" unique_id=668933658]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_font_sizes/font_size = 100
 text = "  0  "
 
-[node name="UnitTBtn" type="Button" parent="TeamMenu/HBoxContainer" unique_id=1529178265]
+[node name="UnitTeamBtn" type="Button" parent="TeamMenu/HBoxContainer" unique_id=1529178265]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 1, 1)
 theme_override_font_sizes/font_size = 100
 text = "  1  "
 
-[node name="Button" type="Button" parent="TeamMenu" unique_id=627432199]
+[node name="BackBtn" type="Button" parent="TeamMenu" unique_id=627432199]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "back"
@@ -182,3 +184,6 @@ text = "back"
 [connection signal="pressed" from="HostMenu/BackBtn" to="." method="_on_host_back_btn_pressed"]
 [connection signal="pressed" from="JoinMenu/ConnectBtn" to="." method="_on_connect_btn_pressed"]
 [connection signal="pressed" from="JoinMenu/BackBtn" to="." method="_on_join_back_btn_pressed"]
+[connection signal="pressed" from="TeamMenu/HBoxContainer/ZeroTeamBtn" to="." method="_on_zero_team_btn_pressed"]
+[connection signal="pressed" from="TeamMenu/HBoxContainer/UnitTeamBtn" to="." method="_on_unit_team_btn_pressed"]
+[connection signal="pressed" from="TeamMenu/BackBtn" to="." method="_on_team_back_btn_pressed"]
