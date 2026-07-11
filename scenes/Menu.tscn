@@ -71,7 +71,6 @@ alignment = 1
 [node name="PortEdit" type="LineEdit" parent="HostMenu" unique_id=748334819]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
-text = "8081"
 placeholder_text = "port"
 
 [node name="ErrLabel" type="Label" parent="HostMenu" unique_id=1047974689]
@@ -110,13 +109,11 @@ alignment = 1
 [node name="HostEdit" type="LineEdit" parent="JoinMenu" unique_id=1616256764]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
-text = "localhost"
 placeholder_text = "address"
 
 [node name="PortEdit" type="LineEdit" parent="JoinMenu" unique_id=1781171131]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
-text = "8081"
 placeholder_text = "port"
 
 [node name="ErrLabel" type="Label" parent="JoinMenu" unique_id=1405340565]

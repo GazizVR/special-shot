@@ -7,6 +7,7 @@ func return_to_menu():
 	if get_tree() != null:
 		multiplayer.multiplayer_peer.close()
 		get_tree().change_scene_to_file("res://scenes/Menu.tscn")
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
 func _enter_tree() -> void:
 	set_multiplayer_authority(name.to_int())
@@ -87,7 +88,7 @@ func _on_gun_bullet_touched(bullet: Area3D, body: Node3D) -> void:
 	var peer_node_path = "/root/game/" + peer_id
 	var peer_node = get_node(peer_node_path)
 	if is_instance_valid(peer_node):
-		if peer_node is CharacterBody3D:
+		if peer_node is CharacterBody3D and bullet.visible:
 			peer_node.health -= 20
 
 func _notification(what: int) -> void:
