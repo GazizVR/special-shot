@@ -23,11 +23,11 @@ transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 0
 script = ExtResource("1_g2els")
 
 [node name="Body" type="CollisionShape3D" parent="." unique_id=898352365]
-transform = Transform3D(0.75, 0, 0, 0, 1, 0, 0, 0, 0.75, 0, 0.6, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
 shape = SubResource("CapsuleShape3D_g2els")
 
 [node name="Model" parent="." unique_id=732237492 instance=ExtResource("2_mdl7e")]
-transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 0, 0, 0)
+transform = Transform3D(0.5, 0, 0, 0, 0.35, 0, 0, 0, 0.5, 0, 0, 0)
 
 [node name="CamPivot" type="Node3D" parent="." unique_id=935450277]
 transform = Transform3D(0.1, 0, 0, 0, 0.10000001, 0, 0, 0, 0.10000001, 0, 1.4, 0.3)

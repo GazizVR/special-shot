@@ -113,7 +113,7 @@ theme_override_font_sizes/font_size = 50
 text = "Menu"
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="." unique_id=1452207389]
-_spawnable_scenes = PackedStringArray("uid://b8oxkj8oidru1", "uid://dfgm1lnq7yylj", "uid://ulnt8khld6xx")
+_spawnable_scenes = PackedStringArray("uid://b8oxkj8oidru1")
 spawn_path = NodePath("..")
 script = ExtResource("2_lbhrr")
 network_player = ExtResource("3_iywne")
