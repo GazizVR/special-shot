@@ -18,6 +18,11 @@ func _input(event: InputEvent) -> void:
 		
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	var floor_z = $Floor.scale.z/2
+	var floor_x = $Floor.global_position.x
+	var floor_y = 2.0
+	GameManager.zero_team_spawn = Vector3(floor_x,floor_y,floor_z-2)
+	GameManager.unit_team_spawn = Vector3(floor_x,floor_y,-floor_z+2)
 
 func _on_continue_pressed() -> void:
 	isPaused = false

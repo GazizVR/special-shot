@@ -19,17 +19,23 @@ func repaint_model(color: Color):
 	$Model/Suzanne.material_override.albedo_color = color
 	$Model/Sphere.material_override.albedo_color = color
 
+var spawn_point: Vector3 = Vector3.ZERO
+
 func _ready() -> void:
 	team = GameManager.selected_team
 	match team:
 		GameManager.Team.ZERO:
-			global_position = Vector3(-20,2,0)
+			spawn_point = GameManager.zero_team_spawn
+			global_position = spawn_point
 			repaint_model(Color.RED)
 		GameManager.Team.UNIT:
-			global_position = Vector3(20,2,0)
+			spawn_point = GameManager.unit_team_spawn
+			global_position = spawn_point
 			repaint_model(Color.BLUE)
 		_:
-			global_position = Vector3(0,2,0)
+			global_position = spawn_point
+	var look_basis = Vector3(spawn_point.x,0,spawn_point.z)
+	basis = Basis.looking_at(look_basis)
 
 func _input(event: InputEvent) -> void:
 	if is_paused: return
@@ -58,8 +64,8 @@ func _process(delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	if !is_multiplayer_authority(): return
 	if health < 1:
-		velocity = Vector3(0,0,0)
-		global_position = Vector3(0,3,0)
+		velocity = Vector3.ZERO
+		global_position = spawn_point
 		health = 100
 	if not is_on_floor():
 		if global_position.y < -2:
