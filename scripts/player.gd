@@ -2,7 +2,7 @@ extends CharacterBody3D
 
 @export var mouseSensetivity = 0.001
 var is_paused = false
-var team: GameManager.Team = GameManager.Team.UNKNOWN
+@export var team: GameManager.Team = GameManager.selected_team
 
 func return_to_menu():
 	if get_tree() != null:
@@ -10,28 +10,31 @@ func return_to_menu():
 		get_tree().change_scene_to_file("res://scenes/menu.tscn")
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
+@export var player_color = Color("#654321"):
+	set(value):
+		player_color = value
+		if not is_inside_tree():
+			await ready
+		$Model/Suzanne.material_override.albedo_color = value
+		$Model/Cylinder.material_override.albedo_color = value
+		$Model/Sphere.material_override.albedo_color = value
+
+var spawn_point: Vector3 = Vector3.ZERO
+
 func _enter_tree() -> void:
 	set_multiplayer_authority(name.to_int())
 	$CamPivot/Camera.current = is_multiplayer_authority()
 	
-func repaint_model(color: Color):
-	$Model/Cylinder.material_override.albedo_color = color
-	$Model/Suzanne.material_override.albedo_color = color
-	$Model/Sphere.material_override.albedo_color = color
-
-var spawn_point: Vector3 = Vector3.ZERO
-
 func _ready() -> void:
-	team = GameManager.selected_team
 	match team:
 		GameManager.Team.ZERO:
 			spawn_point = GameManager.zero_team_spawn
 			global_position = spawn_point
-			repaint_model(Color.RED)
+			player_color = Color.RED
 		GameManager.Team.UNIT:
 			spawn_point = GameManager.unit_team_spawn
 			global_position = spawn_point
-			repaint_model(Color.BLUE)
+			player_color = Color.BLUE
 		_:
 			global_position = spawn_point
 	var look_basis = Vector3(spawn_point.x,0,spawn_point.z)
@@ -67,26 +70,26 @@ func _physics_process(delta: float) -> void:
 		velocity = Vector3.ZERO
 		global_position = spawn_point
 		health = 100
+		move_and_slide()
 	if not is_on_floor():
 		if global_position.y < -2:
 			health = 0
 			return
 		target_velocity.y -= gravity * delta
-		velocity.y = target_velocity.y
-	if is_paused:
+		velocity = target_velocity
 		move_and_slide()
-		return	
+	if is_paused: return
 	var direction = Vector3.ZERO
 	if is_on_floor():
 		if Input.is_action_just_pressed("crouch"):
 			is_crouch = !is_crouch
 			if is_crouch:
-				$Body.scale.y *= crouch_per
+				$Body.position.y *= crouch_per
 				$Model.scale.y *= crouch_per
 				$CamPivot.position.y *= crouch_per
 				speed *= crouch_per
 			else:
-				$Body.scale.y /= crouch_per
+				$Body.position.y /= crouch_per
 				$Model.scale.y /= crouch_per
 				$CamPivot.position.y /= crouch_per
 				speed /= crouch_per
@@ -102,18 +105,19 @@ func _physics_process(delta: float) -> void:
 			direction = direction.normalized()
 		target_velocity.x = direction.x * speed
 		target_velocity.z = direction.z * speed
-	velocity = target_velocity
-	move_and_slide()
+	if direction != Vector3.ZERO:
+		velocity = target_velocity
+		move_and_slide()
 
 @rpc("authority","call_local","reliable")
 func _on_gun_bullet_touched(bullet: Area3D, body: Node3D) -> void:
 	$CamPivot/Hand/Gun.call_deferred("remove_child",bullet)
 	var peer_id = body.name
-	var peer_node_path = "/root/game/" + peer_id
+	var peer_node_path = "/root/Game/" + peer_id
 	var peer_node = get_node(peer_node_path)
 	if is_instance_valid(peer_node):
 		if "health" in peer_node:
-			var has_team: bool = [bullet.shooter, peer_node].all(func(node): return "team" in node)
+			var has_team: bool = [peer_node,bullet.shooter].all(func(node): return "team" in node)
 			if has_team:
 				if peer_node.team != bullet.shooter.team:
 					peer_node.health -= 20
