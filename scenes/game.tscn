@@ -61,6 +61,7 @@ environment = SubResource("Environment_cpr0p")
 process_mode = 3
 
 [node name="PauseMenu" type="Control" parent="CanvasLayer" unique_id=2069157707]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -69,7 +70,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="PauseBG" type="ColorRect" parent="CanvasLayer/PauseMenu" unique_id=1331128661]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -79,7 +79,6 @@ grow_vertical = 2
 color = Color(0.011764706, 0.011764706, 0.011764706, 0.49019608)
 
 [node name="PauseCnt" type="VBoxContainer" parent="CanvasLayer/PauseMenu" unique_id=1782778534]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -111,6 +110,33 @@ text = "Continue"
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "Menu"
+
+[node name="EditSenseContainer" type="VBoxContainer" parent="CanvasLayer/PauseMenu/PauseCnt" unique_id=2047342338]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/PauseMenu/PauseCnt/EditSenseContainer" unique_id=746792745]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Label" type="Label" parent="CanvasLayer/PauseMenu/PauseCnt/EditSenseContainer/HBoxContainer" unique_id=1425472575]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "sensitivity"
+horizontal_alignment = 1
+
+[node name="LineEdit" type="LineEdit" parent="CanvasLayer/PauseMenu/PauseCnt/EditSenseContainer/HBoxContainer" unique_id=322076160]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "1.0"
+alignment = 1
+max_length = 3
+
+[node name="HSlider" type="HSlider" parent="CanvasLayer/PauseMenu/PauseCnt/EditSenseContainer" unique_id=1799939529]
+layout_mode = 2
+min_value = 0.001
+max_value = 1.0
+step = 0.001
+value = 0.1
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="." unique_id=1452207389]
 _spawnable_scenes = PackedStringArray("uid://b8oxkj8oidru1")
