@@ -1,6 +1,6 @@
 extends Area3D
 
-@export var speed = 12
+@export var speed = 1
 @export var shooter: Node
 var is_launch: bool = false
 

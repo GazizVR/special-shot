@@ -99,8 +99,11 @@ func _on_gun_bullet_touched(bullet: Area3D, body: Node3D) -> void:
 	var peer_node_path = "/root/game/" + peer_id
 	var peer_node = get_node(peer_node_path)
 	if is_instance_valid(peer_node):
-		if peer_node.has_method("health"):
-			peer_node.health -= 20
+		if "health" in peer_node:
+			var has_team: bool = [bullet.shooter, peer_node].all(func(node): return "team" in node)
+			if has_team:
+				if peer_node.team != bullet.shooter.team:
+					peer_node.health -= 20
 
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_PAUSED:
