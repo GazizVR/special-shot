@@ -22,7 +22,10 @@ properties/3/spawn = true
 properties/3/replication_mode = 2
 properties/4/path = NodePath(".:player_color")
 properties/4/spawn = true
-properties/4/replication_mode = 1
+properties/4/replication_mode = 2
+properties/5/path = NodePath("Model:position")
+properties/5/spawn = true
+properties/5/replication_mode = 1
 
 [node name="Player" type="CharacterBody3D" unique_id=457187399]
 transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 0, 0)
@@ -36,14 +39,14 @@ shape = SubResource("CapsuleShape3D_g2els")
 transform = Transform3D(0.5, 0, 0, 0, 0.35, 0, 0, 0, 0.5, 0, 0, 0)
 
 [node name="CamPivot" type="Node3D" parent="." unique_id=935450277]
-transform = Transform3D(0.1, 0, 0, 0, 0.10000001, 0, 0, 0, 0.10000001, 0, 1.4, 0.3)
+transform = Transform3D(0.1, 0, 0, 0, 0.10000001, 0, 0, 0, 0.10000001, 0, 1.4, 0.5)
 
 [node name="Camera" type="Camera3D" parent="CamPivot" unique_id=810746517]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 1.45, 0.25)
 far = 1000.0
 
 [node name="Hand" type="Node3D" parent="CamPivot" unique_id=265009307]
-transform = Transform3D(1, 0, -1.4210855e-14, 0, 1, 0, 0, 0, 1, -4, -1, 7)
+transform = Transform3D(1, 0, -1.4210855e-14, 0, 1, 0, 0, 0, 1, -4, -1, 7.5)
 
 [node name="Gun" parent="CamPivot/Hand" unique_id=1689518192 instance=ExtResource("3_mdl7e")]
 

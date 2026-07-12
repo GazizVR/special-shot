@@ -56,7 +56,6 @@ func _input(event: InputEvent) -> void:
 @export var gravity = 10
 var target_velocity = Vector3.ZERO
 var is_crouch = false
-@export var crouch_per = 0.6
 @export var health = 100
 
 func _process(delta: float) -> void:
@@ -81,18 +80,6 @@ func _physics_process(delta: float) -> void:
 	if is_paused: return
 	var direction = Vector3.ZERO
 	if is_on_floor():
-		if Input.is_action_just_pressed("crouch"):
-			is_crouch = !is_crouch
-			if is_crouch:
-				$Body.position.y *= crouch_per
-				$Model.scale.y *= crouch_per
-				$CamPivot.position.y *= crouch_per
-				speed *= crouch_per
-			else:
-				$Body.position.y /= crouch_per
-				$Model.scale.y /= crouch_per
-				$CamPivot.position.y /= crouch_per
-				speed /= crouch_per
 		if Input.is_action_pressed("walk_forward"):
 			direction += global_transform.basis.z
 		if Input.is_action_pressed("walk_back"):
