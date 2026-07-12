@@ -7,7 +7,7 @@ var team: GameManager.Team = GameManager.Team.UNKNOWN
 func return_to_menu():
 	if get_tree() != null:
 		multiplayer.multiplayer_peer.close()
-		get_tree().change_scene_to_file("res://scenes/Menu.tscn")
+		get_tree().change_scene_to_file("res://scenes/menu.tscn")
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
 func _enter_tree() -> void:

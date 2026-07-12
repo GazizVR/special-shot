@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dtdt2yixti8f2" path="res://scripts/gun.gd" id="1_ljf13"]
 [ext_resource type="PackedScene" uid="uid://bcslj1xxa88ab" path="res://assets/models/Gun.glb" id="2_h5px7"]
-[ext_resource type="PackedScene" uid="uid://ulnt8khld6xx" path="res://scenes/Bullet.tscn" id="3_ljf13"]
+[ext_resource type="PackedScene" uid="uid://ulnt8khld6xx" path="res://scenes/bullet.tscn" id="3_ljf13"]
 
 [node name="Gun" type="Node3D" unique_id=1689518192]
 script = ExtResource("1_ljf13")

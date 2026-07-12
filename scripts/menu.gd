@@ -62,7 +62,7 @@ func _ready() -> void:
 	multiplayer.connection_failed.connect(connection_failed)
 	
 func connected() -> void:
-	get_tree().change_scene_to_file("res://scenes/Game.tscn")
+	get_tree().change_scene_to_file("res://scenes/game.tscn")
 
 var has_timer = false
 
@@ -87,7 +87,7 @@ func _on_team_back_btn_pressed() -> void:
 func _on_zero_team_btn_pressed() -> void:
 	GameManager.selected_team = GameManager.Team.ZERO
 	if cnn_type == ConnectionType.Host:
-		get_tree().change_scene_to_file("res://scenes/Game.tscn")
+		get_tree().change_scene_to_file("res://scenes/game.tscn")
 	if cnn_type == ConnectionType.Join:
 		if !has_timer:
 			has_timer = true
@@ -105,7 +105,7 @@ func _on_zero_team_btn_pressed() -> void:
 func _on_unit_team_btn_pressed() -> void:
 	GameManager.selected_team = GameManager.Team.UNIT
 	if cnn_type == ConnectionType.Host:
-		get_tree().change_scene_to_file("res://scenes/Game.tscn")
+		get_tree().change_scene_to_file("res://scenes/game.tscn")
 	if cnn_type == ConnectionType.Join:
 		if !has_timer:
 			has_timer = true

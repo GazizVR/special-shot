@@ -33,4 +33,4 @@ func _on_continue_pressed() -> void:
 
 func _on_menu_btn_pressed() -> void:
 	multiplayer.multiplayer_peer.close()
-	get_tree().change_scene_to_file("res://scenes/Menu.tscn")
+	get_tree().change_scene_to_file("res://scenes/menu.tscn")
