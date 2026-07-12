@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://xx84iumxldqd"]
+
+[ext_resource type="PackedScene" uid="uid://bbl0hgeru6g3v" path="res://assets/models/Player.glb" id="1_fr7j6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cggpe"]
+albedo_color = Color(0.39607844, 0.2627451, 0.12941177, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_73kw6"]
+albedo_color = Color(0.39607844, 0.2627451, 0.12941177, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aw2h2"]
+albedo_color = Color(0.39607844, 0.2627451, 0.12941177, 1)
+
+[node name="PlayerModel" unique_id=732237492 instance=ExtResource("1_fr7j6")]
+
+[node name="Suzanne" parent="." index="0" unique_id=2092885471]
+material_override = SubResource("StandardMaterial3D_cggpe")
+
+[node name="Cylinder" parent="." index="1" unique_id=580126638]
+material_override = SubResource("StandardMaterial3D_73kw6")
+
+[node name="Sphere" parent="." index="2" unique_id=2073240775]
+material_override = SubResource("StandardMaterial3D_aw2h2")

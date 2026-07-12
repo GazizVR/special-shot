@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b8oxkj8oidru1"]
 
-[ext_resource type="PackedScene" uid="uid://bbl0hgeru6g3v" path="res://assets/models/Player.glb" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://govfvmcim26r" path="res://scripts/player.gd" id="1_g2els"]
+[ext_resource type="PackedScene" uid="uid://xx84iumxldqd" path="res://scenes/player_model.tscn" id="2_mdl7e"]
 [ext_resource type="Script" uid="uid://cjlj2lm1xcx6a" path="res://scripts/player_gui.gd" id="3_3li8b"]
 [ext_resource type="PackedScene" uid="uid://dfgm1lnq7yylj" path="res://scenes/Gun.tscn" id="3_mdl7e"]
 
@@ -26,7 +26,7 @@ script = ExtResource("1_g2els")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
 shape = SubResource("CapsuleShape3D_g2els")
 
-[node name="Model" parent="." unique_id=1634859597 instance=ExtResource("1_3vyb7")]
+[node name="Model" parent="." unique_id=732237492 instance=ExtResource("2_mdl7e")]
 transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 0, 0, 0)
 
 [node name="CamPivot" type="Node3D" parent="." unique_id=935450277]

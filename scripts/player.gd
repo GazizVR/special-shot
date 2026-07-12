@@ -13,14 +13,21 @@ func return_to_menu():
 func _enter_tree() -> void:
 	set_multiplayer_authority(name.to_int())
 	$CamPivot/Camera.current = is_multiplayer_authority()
+	
+func repaint_model(color: Color):
+	$Model/Cylinder.material_override.albedo_color = color
+	$Model/Suzanne.material_override.albedo_color = color
+	$Model/Sphere.material_override.albedo_color = color
 
 func _ready() -> void:
 	team = GameManager.selected_team
 	match team:
 		GameManager.Team.ZERO:
 			global_position = Vector3(-20,2,0)
+			repaint_model(Color.RED)
 		GameManager.Team.UNIT:
 			global_position = Vector3(20,2,0)
+			repaint_model(Color.BLUE)
 		_:
 			global_position = Vector3(0,2,0)
 
