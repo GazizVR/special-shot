@@ -1,6 +1,5 @@
 extends CharacterBody3D
 
-@export var mouseSensetivity = 0.001
 var is_paused = false
 @export var team: GameManager.Team = GameManager.selected_team
 
@@ -44,8 +43,8 @@ func _input(event: InputEvent) -> void:
 	if is_paused: return
 	if !is_multiplayer_authority(): return
 	if event is InputEventMouseMotion:
-		rotate_y(-event.relative.x*mouseSensetivity)
-		var vertical_rotaion = event.relative.y*mouseSensetivity
+		rotate_y(-event.relative.x*GameManager.camera_sensitivity)
+		var vertical_rotaion = event.relative.y*GameManager.camera_sensitivity
 		$CamPivot.rotation.x = clamp(
 			$CamPivot.rotation.x+vertical_rotaion,
 			deg_to_rad(-75),

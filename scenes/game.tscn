@@ -111,27 +111,29 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "Menu"
 
-[node name="EditSenseContainer" type="VBoxContainer" parent="CanvasLayer/PauseMenu/PauseCnt" unique_id=2047342338]
+[node name="SensContainer" type="VBoxContainer" parent="CanvasLayer/PauseMenu/PauseCnt" unique_id=2047342338]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/PauseMenu/PauseCnt/EditSenseContainer" unique_id=746792745]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/PauseMenu/PauseCnt/SensContainer" unique_id=746792745]
 layout_mode = 2
 theme_override_constants/separation = 12
 
-[node name="Label" type="Label" parent="CanvasLayer/PauseMenu/PauseCnt/EditSenseContainer/HBoxContainer" unique_id=1425472575]
+[node name="Label" type="Label" parent="CanvasLayer/PauseMenu/PauseCnt/SensContainer/HBoxContainer" unique_id=1425472575]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "sensitivity"
 horizontal_alignment = 1
 
-[node name="LineEdit" type="LineEdit" parent="CanvasLayer/PauseMenu/PauseCnt/EditSenseContainer/HBoxContainer" unique_id=322076160]
+[node name="LineEdit" type="LineEdit" parent="CanvasLayer/PauseMenu/PauseCnt/SensContainer/HBoxContainer" unique_id=322076160]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "1.0"
 alignment = 1
-max_length = 3
+max_length = 5
+emoji_menu_enabled = false
+virtual_keyboard_type = 3
 
-[node name="HSlider" type="HSlider" parent="CanvasLayer/PauseMenu/PauseCnt/EditSenseContainer" unique_id=1799939529]
+[node name="HSlider" type="HSlider" parent="CanvasLayer/PauseMenu/PauseCnt/SensContainer" unique_id=1799939529]
 layout_mode = 2
 min_value = 0.001
 max_value = 1.0

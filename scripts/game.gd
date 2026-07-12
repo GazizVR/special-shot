@@ -21,6 +21,9 @@ func _ready() -> void:
 	var floor_y = 2.0
 	GameManager.zero_team_spawn = Vector3(floor_x,floor_y,floor_z-2)
 	GameManager.unit_team_spawn = Vector3(floor_x,floor_y,-floor_z+2)
+	var sensitivity = GameManager.camera_sensitivity
+	$CanvasLayer/PauseMenu/PauseCnt/SensContainer/HSlider.value = sensitivity
+	$CanvasLayer/PauseMenu/PauseCnt/SensContainer/HBoxContainer/LineEdit.text = str(sensitivity)
 
 func _on_continue_pressed() -> void:
 	isPaused = false
@@ -31,3 +34,4 @@ func _on_continue_pressed() -> void:
 func _on_menu_btn_pressed() -> void:
 	multiplayer.multiplayer_peer.close()
 	get_tree().change_scene_to_file("res://scenes/menu.tscn")
+	
