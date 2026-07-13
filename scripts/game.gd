@@ -7,10 +7,12 @@ func _input(event: InputEvent) -> void:
 		isPaused = !isPaused
 		if isPaused:
 			propagate_notification(NOTIFICATION_PAUSED)
+			$CanvasLayer/ScoreControl.visible = false
 			$CanvasLayer/PauseMenu.visible = true
 			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		else:
 			$CanvasLayer/PauseMenu.visible = false
+			$CanvasLayer/ScoreControl.visible = true
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 			propagate_notification(NOTIFICATION_UNPAUSED)
 		
@@ -28,6 +30,7 @@ func _ready() -> void:
 func _on_continue_pressed() -> void:
 	isPaused = false
 	$CanvasLayer/PauseMenu.visible = false
+	$CanvasLayer/ScoreControl.visible = true
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	propagate_notification(NOTIFICATION_UNPAUSED)
 

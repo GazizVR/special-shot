@@ -94,6 +94,8 @@ func _physics_process(delta: float) -> void:
 	if direction != Vector3.ZERO:
 		velocity = target_velocity
 		move_and_slide()
+		
+var frag_count = 0
 
 @rpc("authority","call_local","reliable")
 func _on_gun_bullet_touched(bullet: Area3D, body: Node3D) -> void:
@@ -107,6 +109,12 @@ func _on_gun_bullet_touched(bullet: Area3D, body: Node3D) -> void:
 			if has_team:
 				if peer_node.team != bullet.shooter.team:
 					peer_node.health -= 20
+					if peer_node.health < 1:
+						if peer_node.team == GameManager.Team.ZERO:
+							GameManager.zero_team_score += 1
+						if peer_node.team == GameManager.Team.UNIT:
+							GameManager.unit_team_score += 1
+						
 
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_PAUSED:

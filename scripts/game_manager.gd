@@ -11,3 +11,6 @@ enum Team {
 
 var zero_team_spawn: Vector3 = Vector3.ZERO
 var unit_team_spawn: Vector3 = Vector3.ZERO
+
+var zero_team_score: int = 0
+var unit_team_score: int = 0
