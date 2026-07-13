@@ -26,6 +26,18 @@ func _ready() -> void:
 	var sensitivity = GameManager.camera_sensitivity
 	$CanvasLayer/PauseMenu/PauseCnt/SensContainer/HSlider.value = sensitivity
 	$CanvasLayer/PauseMenu/PauseCnt/SensContainer/HBoxContainer/LineEdit.text = str(sensitivity)
+	GameManager.team_score_changed.connect(score_changed)
+
+func score_changed(team: GameManager.Team):
+	if team == GameManager.Team.ZERO:
+		var score_str: String = $CanvasLayer/ScoreControl/HBoxContainer/ZeroTScore.text
+		var score = score_str.to_int() 
+		$CanvasLayer/ScoreControl/HBoxContainer/ZeroTScore.text = str(score+1)
+	if team == GameManager.Team.ZERO:
+		var score_str: String = $CanvasLayer/ScoreControl/HBoxContainer/UnitTScore.text
+		var score = score_str.to_int() 
+		$CanvasLayer/ScoreControl/HBoxContainer/UnitTScore.text = str(score+1)
+		
 
 func _on_continue_pressed() -> void:
 	isPaused = false
