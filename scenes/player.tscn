@@ -27,6 +27,9 @@ properties/3/replication_mode = 2
 properties/4/path = NodePath(".:player_color")
 properties/4/spawn = true
 properties/4/replication_mode = 2
+properties/5/path = NodePath(".:health")
+properties/5/spawn = true
+properties/5/replication_mode = 2
 
 [node name="Player" type="CharacterBody3D" unique_id=457187399]
 transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 0, 0)
@@ -39,13 +42,13 @@ shape = SubResource("CapsuleShape3D_g2els")
 [node name="Model" parent="." unique_id=732237492 instance=ExtResource("2_mdl7e")]
 transform = Transform3D(0.5, 0, 0, 0, 0.35, 0, 0, 0, 0.5, 0, 0, 0)
 
-[node name="Suzanne" parent="Model" index="0" unique_id=2092885471]
+[node name="Suzanne" parent="Model" index="0" unique_id=859085875]
 material_override = SubResource("StandardMaterial3D_dqkch")
 
-[node name="Cylinder" parent="Model" index="1" unique_id=580126638]
+[node name="Cylinder" parent="Model" index="1" unique_id=1815120790]
 material_override = SubResource("StandardMaterial3D_dqkch")
 
-[node name="Sphere" parent="Model" index="2" unique_id=2073240775]
+[node name="Sphere" parent="Model" index="2" unique_id=480281562]
 material_override = SubResource("StandardMaterial3D_dqkch")
 
 [node name="CamPivot" type="Node3D" parent="." unique_id=935450277]

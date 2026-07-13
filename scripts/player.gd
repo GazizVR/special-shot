@@ -62,9 +62,17 @@ func _process(delta: float) -> void:
 	if !is_multiplayer_authority(): return
 	$CanvasLayer/Control/HPLabel.text = "HP " + str(health)
 
+@rpc("authority","call_local","reliable")
+func zero_health():
+	if team == GameManager.Team.ZERO:
+		GameManager.unit_team_score += 1
+	if team == GameManager.Team.UNIT:
+		GameManager.zero_team_score += 1
+
 func _physics_process(delta: float) -> void:
 	if !is_multiplayer_authority(): return
 	if health < 1:
+		zero_health.rpc()
 		velocity = Vector3.ZERO
 		global_position = spawn_point
 		health = 100
@@ -109,12 +117,6 @@ func _on_gun_bullet_touched(bullet: Area3D, body: Node3D) -> void:
 			if has_team:
 				if peer_node.team != bullet.shooter.team:
 					peer_node.health -= 20
-					if peer_node.health < 1:
-						if peer_node.team == GameManager.Team.ZERO:
-							GameManager.zero_team_score += 1
-						if peer_node.team == GameManager.Team.UNIT:
-							GameManager.unit_team_score += 1
-						
 
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_PAUSED:
