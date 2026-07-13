@@ -18,8 +18,8 @@ func _input(event: InputEvent) -> void:
 		
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	GameManager.unit_team_spawn = Vector3(0,2,0)
-	GameManager.zero_team_spawn = Vector3(0,2,0)
+	GameManager.unit_team_spawn = Vector3($Map/FirstSpawn.global_position.x,2,$Map/FirstSpawn.global_position.z)
+	GameManager.zero_team_spawn = Vector3($Map/SecondSpawn.global_position.x,2,$Map/SecondSpawn.global_position.z)
 	var sensitivity = GameManager.camera_sensitivity
 	$CanvasLayer/PauseMenu/PauseCnt/SensContainer/HSlider.value = sensitivity
 	$CanvasLayer/PauseMenu/PauseCnt/SensContainer/HBoxContainer/LineEdit.text = str(sensitivity)
