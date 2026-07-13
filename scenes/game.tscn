@@ -148,3 +148,5 @@ network_player = ExtResource("3_iywne")
 
 [connection signal="pressed" from="CanvasLayer/PauseMenu/PauseCnt/Continue" to="." method="_on_continue_pressed"]
 [connection signal="pressed" from="CanvasLayer/PauseMenu/PauseCnt/MenuBtn" to="." method="_on_menu_btn_pressed"]
+[connection signal="text_changed" from="CanvasLayer/PauseMenu/PauseCnt/SensContainer/HBoxContainer/LineEdit" to="." method="_on_line_edit_text_changed"]
+[connection signal="value_changed" from="CanvasLayer/PauseMenu/PauseCnt/SensContainer/HSlider" to="." method="_on_h_slider_value_changed"]

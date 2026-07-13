@@ -72,6 +72,7 @@ alignment = 1
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 placeholder_text = "port"
+virtual_keyboard_type = 2
 
 [node name="ErrLabel" type="Label" parent="HostMenu" unique_id=1047974689]
 layout_mode = 2
@@ -115,6 +116,7 @@ placeholder_text = "address"
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 placeholder_text = "port"
+virtual_keyboard_type = 2
 
 [node name="ErrLabel" type="Label" parent="JoinMenu" unique_id=474479369]
 layout_mode = 2

@@ -34,4 +34,18 @@ func _on_continue_pressed() -> void:
 func _on_menu_btn_pressed() -> void:
 	multiplayer.multiplayer_peer.close()
 	get_tree().change_scene_to_file("res://scenes/menu.tscn")
-	
+
+func _on_h_slider_value_changed(value: float) -> void:
+	GameManager.camera_sensitivity = value
+	$CanvasLayer/PauseMenu/PauseCnt/SensContainer/HBoxContainer/LineEdit.text = str(value)
+
+func _on_line_edit_text_changed(new_text: String) -> void:
+	var value = GameManager.camera_sensitivity
+	if new_text.is_valid_float():
+		var new_float = new_text.to_float()
+		if new_float > 0.0009 and new_float <= 1.0:
+			value = new_float
+	$CanvasLayer/PauseMenu/PauseCnt/SensContainer/HBoxContainer/LineEdit.text = str(value)
+	if value != GameManager.camera_sensitivity:
+		GameManager.camera_sensitivity = value
+		$CanvasLayer/PauseMenu/PauseCnt/SensContainer/HSlider.value = value
