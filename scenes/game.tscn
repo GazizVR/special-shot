@@ -1,18 +1,9 @@
 [gd_scene format=3 uid="uid://dehmeu5kji8hw"]
 
 [ext_resource type="Script" uid="uid://ddwjo6o6qk1p" path="res://scripts/game.gd" id="1_lnu2h"]
+[ext_resource type="PackedScene" uid="uid://2vrrf27jp2hy" path="res://scenes/map.tscn" id="2_iywne"]
 [ext_resource type="Script" uid="uid://cqifgxhcdng7p" path="res://scripts/spawner_mp.gd" id="2_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://b8oxkj8oidru1" path="res://scenes/player.tscn" id="3_iywne"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_8cj0n"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_78awf"]
-albedo_color = Color(0.79607844, 0.69803923, 0.5764706, 1)
-roughness = 0.7
-
-[sub_resource type="BoxMesh" id="BoxMesh_uwrxv"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cpr0p"]
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_cpr0p"]
 sun_disk_scale = 10.0
@@ -30,16 +21,7 @@ tonemap_mode = 2
 [node name="Game" type="Node3D" unique_id=731612117]
 script = ExtResource("1_lnu2h")
 
-[node name="Floor" type="StaticBody3D" parent="." unique_id=1039886930]
-transform = Transform3D(50, 0, 0, 0, 1, 0, 0, 0, 50, 0, 0.5, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor" unique_id=1026303837]
-shape = SubResource("BoxShape3D_8cj0n")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor" unique_id=767500615]
-material_override = SubResource("StandardMaterial3D_78awf")
-mesh = SubResource("BoxMesh_uwrxv")
-surface_material_override/0 = SubResource("StandardMaterial3D_cpr0p")
+[node name="Map" parent="." unique_id=744275881 instance=ExtResource("2_iywne")]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=227133486]
 transform = Transform3D(0.70710677, -0.49999997, 0.49999997, 0, 0.70710677, 0.70710677, -0.70710677, -0.49999997, 0.49999997, 0, 5, 0)

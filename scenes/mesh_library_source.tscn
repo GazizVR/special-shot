@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://b5clmblvei6mu"]
+
+[ext_resource type="PackedScene" uid="uid://b8vfgvxf6f2hl" path="res://scenes/external/indicator.tscn" id="1_okh8k"]
+[ext_resource type="PackedScene" uid="uid://62rg2pg6q2nj" path="res://scenes/external/floor_square.tscn" id="2_okh8k"]
+[ext_resource type="PackedScene" uid="uid://ddu68bpoapjy5" path="res://scenes/external/floor.tscn" id="3_5w4h6"]
+[ext_resource type="PackedScene" uid="uid://bg14hdyux4unc" path="res://scenes/external/wall.tscn" id="5_a7feb"]
+
+[node name="Node3D" type="Node3D" unique_id=888229795]
+
+[node name="Indicator" parent="." unique_id=1470237093 instance=ExtResource("1_okh8k")]
+
+[node name="FloorSquare" parent="." unique_id=436894951 instance=ExtResource("2_okh8k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="Floor" parent="." unique_id=1813023158 instance=ExtResource("3_5w4h6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
+
+[node name="Wall" parent="." unique_id=786129371 instance=ExtResource("5_a7feb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)

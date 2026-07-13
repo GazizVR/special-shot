@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://bg14hdyux4unc"]
+
+[ext_resource type="PackedScene" uid="uid://bmculvt1o45um" path="res://assets/models/external/wall.glb" id="1_rcmvi"]
+[ext_resource type="Texture2D" uid="uid://bu1365j46y2bx" path="res://assets/textures/mesh-library-colormap.png" id="2_d4xdt"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2fkut"]
+albedo_texture = ExtResource("2_d4xdt")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rcmvi"]
+size = Vector3(0.2, 1, 1)
+
+[node name="Wall" unique_id=786129371 instance=ExtResource("1_rcmvi")]
+
+[node name="wall" parent="." index="0" unique_id=599548837]
+surface_material_override/0 = SubResource("StandardMaterial3D_2fkut")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="wall" index="0" unique_id=731319976]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="wall/StaticBody3D" index="0" unique_id=3227910]
+shape = SubResource("BoxShape3D_rcmvi")

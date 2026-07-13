@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://b8vfgvxf6f2hl"]
+
+[ext_resource type="PackedScene" uid="uid://ctinw1tsoormp" path="res://assets/models/external/indicator.glb" id="1_nbiki"]
+[ext_resource type="Texture2D" uid="uid://bu1365j46y2bx" path="res://assets/textures/mesh-library-colormap.png" id="2_1m0h0"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7efii"]
+albedo_texture = ExtResource("2_1m0h0")
+
+[node name="Indicator" unique_id=1470237093 instance=ExtResource("1_nbiki")]
+
+[node name="indicator-square-b" parent="." index="0" unique_id=2005906608]
+surface_material_override/0 = SubResource("StandardMaterial3D_7efii")

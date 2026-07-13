@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://ddu68bpoapjy5"]
+
+[ext_resource type="PackedScene" uid="uid://c6kfllk5pia7d" path="res://assets/models/external/floor.glb" id="1_1dy7i"]
+[ext_resource type="Texture2D" uid="uid://bu1365j46y2bx" path="res://assets/textures/mesh-library-colormap.png" id="2_bdes0"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8i458"]
+albedo_texture = ExtResource("2_bdes0")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bdes0"]
+size = Vector3(1, 0.2, 1)
+
+[node name="Floor" unique_id=1813023158 instance=ExtResource("1_1dy7i")]
+
+[node name="floor-thick" parent="." index="0" unique_id=1704029197]
+surface_material_override/0 = SubResource("StandardMaterial3D_8i458")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="floor-thick" index="0" unique_id=1697089622]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="floor-thick/StaticBody3D" index="0" unique_id=961341260]
+shape = SubResource("BoxShape3D_bdes0")

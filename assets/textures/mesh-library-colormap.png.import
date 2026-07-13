@@ -2,9 +2,9 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cvlh5reuleewq"
-path.s3tc="res://.godot/imported/main_menu_bg.png-fc4226f677e60e5897113f19c7ee31c0.s3tc.ctex"
-path.etc2="res://.godot/imported/main_menu_bg.png-fc4226f677e60e5897113f19c7ee31c0.etc2.ctex"
+uid="uid://bu1365j46y2bx"
+path.s3tc="res://.godot/imported/mesh-library-colormap.png-9ad427881f9b7e17672bb4489d552b8b.s3tc.ctex"
+path.etc2="res://.godot/imported/mesh-library-colormap.png-9ad427881f9b7e17672bb4489d552b8b.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/pics/main_menu_bg.png"
-dest_files=["res://.godot/imported/main_menu_bg.png-fc4226f677e60e5897113f19c7ee31c0.s3tc.ctex", "res://.godot/imported/main_menu_bg.png-fc4226f677e60e5897113f19c7ee31c0.etc2.ctex"]
+source_file="res://assets/textures/mesh-library-colormap.png"
+dest_files=["res://.godot/imported/mesh-library-colormap.png-9ad427881f9b7e17672bb4489d552b8b.s3tc.ctex", "res://.godot/imported/mesh-library-colormap.png-9ad427881f9b7e17672bb4489d552b8b.etc2.ctex"]
 
 [params]
 
